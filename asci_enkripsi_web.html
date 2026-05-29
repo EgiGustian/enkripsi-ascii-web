@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASCII Enckripsi Web</title>
+
+  <!-- Style -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+</head>
+<body>
+
+  <div class="wrap">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Enkripsi ASCII — konverter teks ke kode DEC dan biner</h2>
+  <div class="header">
+    <h2><i class="ti ti-lock" aria-hidden="true"></i> Enkripsi ASCII</h2>
+    <p>Masukkan teks untuk melihat konversi karakter ke kode DEC dan Biner</p>
+  </div>
+
+  <div class="input-card">
+    <div class="input-row">
+      <input type="text" id="txtInput" placeholder="Ketik teks di sini…" maxlength="40" autocomplete="off" />
+      <button class="btn-clear" onclick="clearInput()"><i class="ti ti-x" aria-hidden="true"></i> Hapus</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="sv" id="st-chars">0</div><div class="sl">Karakter</div></div>
+    <div class="stat"><div class="sv" id="st-words">0</div><div class="sl">Kata</div></div>
+    <div class="stat"><div class="sv" id="st-bits">0</div><div class="sl">Total bit</div></div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('visual')"><i class="ti ti-layout-grid" aria-hidden="true"></i> Visual</div>
+    <div class="tab" onclick="switchTab('full')"><i class="ti ti-list" aria-hidden="true"></i> Detail</div>
+    <div class="tab" onclick="switchTab('db')"><i class="ti ti-table" aria-hidden="true"></i> Database ASCII</div>
+  </div>
+
+  <div id="tab-visual" class="result-panel show">
+    <div id="charGrid" class="char-grid"><div class="empty"><i class="ti ti-keyboard" aria-hidden="true"></i><br>Belum ada teks</div></div>
+  </div>
+
+  <div id="tab-full" class="result-panel">
+    <button class="copy-btn" onclick="copyFull()"><i class="ti ti-copy" aria-hidden="true"></i> Salin</button>
+    <div id="fullView" class="full-view"><span style="color:var(--color-text-tertiary)">Ketik teks untuk melihat hasil lengkap…</span></div>
+  </div>
+
+  <div id="tab-db" class="result-panel">
+    <input type="text" class="db-search" id="dbSearch" placeholder="Cari karakter, DEC, atau biner…" oninput="filterDB()" />
+    <div class="db-wrap">
+      <table class="db-table" id="dbTable">
+        <thead><tr><th>Karakter</th><th>DEC</th><th>Biner (8-bit)</th><th>Kategori</th></tr></thead>
+        <tbody id="dbBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
